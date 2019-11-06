@@ -500,6 +500,7 @@
            done at that stage, and some other party will have to explictly initialize the cluster.
         -->
         <parameter name="AvoidInitiation">true</parameter>
+        <parameter name="clusteringPattern">nonWorkerManager</parameter>
 
         <!--
            The membership scheme used in this setup. The only values supported at the moment are
@@ -584,6 +585,7 @@
         <parameter name="properties">
             <property name="backendServerURL" value="https://${hostName}:${httpsPort}/services/"/>
             <property name="mgtConsoleURL" value="https://${hostName}:${httpsPort}/"/>
+            <property name="subDomain" value="worker"/>
  	    <!-- Manger Setup with Port Mapping-->
 	    <!--property name="port.mapping.8280" value="9764"/>
             <property name="port.mapping.8243" value="9444"/>
