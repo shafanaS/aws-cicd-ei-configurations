@@ -40,8 +40,22 @@ class ei (
 
   # Copy mysql-connector-java-5.1.41-bin.jar to installed directory
   file { "$wso2_path/$product-$product_version/lib/${mysql_connector}":
-  # file { "$wso2_path/${mysql_connector}":
     mode   => '0754',
     source => "puppet:///modules/${module_name}/lib/${mysql_connector}",
   }
+
+  # Download patch file
+  download_file { "Download patch file" :
+    url                   => 'https://wso2-patches.s3-us-west-2.amazonaws.com/patch9999.zip',
+    destination_directory => '${puppet_modules_path}/patch'
+  }
+
+  #unzip patch file
+    exec { "unzip-patch-file":
+      command     => "unzip ${puppet_modules_path}/patch/${patch_file} -d $wso2_path/$product-$product_version/patches/",
+      path        => "/usr/bin/",
+      cwd         => "${puppet_modules_path}",
+      refreshonly => true,
+    }
+
 }

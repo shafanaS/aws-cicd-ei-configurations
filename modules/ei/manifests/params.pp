@@ -38,6 +38,7 @@ class ei::params {
   $start_script_template="bin/integrator.sh"
   $mysql_connector="mysql-connector-java-5.1.41-bin.jar"
   $puppet_modules_path ="/var/lib/jenkins/workspace/$product-$product_version/configs/modules"
+  $patch_file="patch9999.zip"
 
   $template_list = [
     'conf/datasources/master-datasources.xml',
